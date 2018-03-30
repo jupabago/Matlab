@@ -1,6 +1,7 @@
 timepoints = 11;
-positions = 11;
+positions = 5;
 slices = 67;
+filename = '/62x_SaLac-PAO1-PA14-SaPa01-SaPa14-bkgd_co_SCFM2_18hrTimeLapse_tile2x2_3-19-18_z';
 for position = 0:positions;
 collectThresholdGreen = zeros(timepoints+1, 1);%this is a list where the threshold of each stack is stored
 collectThresholdRed = zeros(timepoints+1, 1);
@@ -11,29 +12,41 @@ for timempoint = 0:timepoints;
         if (position>=10)
             if (slice>=10) && (slice<=99)
                 if(timempoint<10)
-                    name = strcat('p',num2str(position),'/t0',num2str(timempoint),'/11-2-17_z',num2str(slice),'_t0',num2str(timempoint),'_p',num2str(position),'.tif');
+                    name = strcat('p',num2str(position),'/t0',num2str(timempoint),filename,num2str(slice),'_t0',num2str(timempoint),'_p',num2str(position),'_m',num2str(tile),'.tif');
                 else
-                    name = strcat('p',num2str(position),'/t',num2str(timempoint),'/11-2-17_z',num2str(slice),'_t',num2str(timempoint),'_p',num2str(position),'.tif');
+                    name = strcat('p',num2str(position),'/t',num2str(timempoint),filename,num2str(slice),'_t',num2str(timempoint),'_p',num2str(position),'_m',num2str(tile),'.tif');
                 end
             elseif (slice<10)
                 if(timempoint<10)
-                    name = strcat('p',num2str(position),'/t0',num2str(timempoint),'/11-2-17_z0',num2str(slice),'_t0',num2str(timempoint),'_p',num2str(position),'.tif');
+                    for tile = 0:3;
+                    name = strcat('p',num2str(position),'/t0',num2str(timempoint),filename,num2str(0),num2str(timempoint),'_p',num2str(position),'_m',num2str(tile),'.tif');
+                    end
                 else
-                    name = strcat('p',num2str(position),'/t',num2str(timempoint),'/11-2-17_z0',num2str(slice),'_t',num2str(timempoint),'_p',num2str(position),'.tif');
-                end   
+                    for tile = 0:3;
+                    name = strcat('p',num2str(position),'/t',num2str(timempoint),filename,num2str(0),num2str(slice),'_t',num2str(timempoint),'_p',num2str(position),'_m',num2str(tile),'.tif');
+                    end
+                end
             end
         elseif (position<10)
             if (slice>=10) && (slice<=99)
                 if(timempoint<10)
-                    name = strcat('p0',num2str(position),'/t0',num2str(timempoint),'/11-2-17_z',num2str(slice),'_t0',num2str(timempoint),'_p0',num2str(position),'.tif');
+                    for tile = 0:3;
+                    name = strcat('p',num2str(position),'/t0',num2str(timempoint),filename,num2str(slice),'_t0',num2str(timempoint),'_p',num2str(position),'_m',num2str(tile),'.tif');
+                    end
                 else
-                    name = strcat('p0',num2str(position),'/t',num2str(timempoint),'/11-2-17_z',num2str(slice),'_t',num2str(timempoint),'_p0',num2str(position),'.tif');
+                    for tile = 0:3;
+                    name = strcat('p',num2str(position),'/t',num2str(timempoint),filename,num2str(slice),'_t',num2str(timempoint),'_p',num2str(position),'_m',num2str(tile),'.tif');
+                    end
                 end
             elseif (slice<10)
                 if(timempoint<10)
-                    name = strcat('p0',num2str(position),'/t0',num2str(timempoint),'/11-2-17_z0',num2str(slice),'_t0',num2str(timempoint),'_p0',num2str(position),'.tif');
+                    for tile = 0:3;
+                    name = strcat('p',num2str(position),'/t0',num2str(timempoint),filename,num2str(00),num2str(slice),'_t0',num2str(timempoint),'_p',num2str(position),'_m',num2str(tile),'.tif');
+                    end
                 else
-                    name = strcat('p0',num2str(position),'/t',num2str(timempoint),'/11-2-17_z0',num2str(slice),'_t',num2str(timempoint),'_p0',num2str(position),'.tif');
+                    for tile = 0:3;
+                    name = strcat('p',num2str(position),'/t',num2str(timempoint),filename,num2str(00),num2str(slice),'_t',num2str(timempoint),'_p',num2str(position),'_m',num2str(tile),'.tif');
+                    end
                 end
             
             end
